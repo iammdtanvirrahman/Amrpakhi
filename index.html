@@ -4,17 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For Samira 💙</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div id="stars"></div>
-
   <div class="sun"></div>
   <div class="moon"></div>
   <div class="earth"></div>
@@ -25,25 +22,24 @@
   </div>
 
   <main class="slideshow">
-    <div class="photo-frame">
+    <div class="card-container">
+      
+      <!-- Image Section -->
+      <div class="image-area">
+        <!-- Blurred Background Image -->
+        <img id="bgBlur" src="1.jpg" alt="" class="bg-blur">
+        <!-- Main Clear Image -->
+        <img id="slideImage" src="1.jpg" alt="Samira" class="main-img">
+      </div>
 
-      <img id="slideImage" src="photo1.jpg" alt="Samira">
-
-      <div class="overlay">
-        <div class="overlay-inner">
-
-          <div class="label">NOW PLAYING 🎵</div>
-
-          <h1 id="lyricText">
-            এ যেন সহজ স্বীকারোক্তি
-            আমি যুগান্তরী নই
-          </h1>
-
-          <p class="signature">
-            For Samira — From Tanvir
-          </p>
-
-        </div>
+      <!-- Text Section -->
+      <div class="text-area">
+        <div class="label">NOW PLAYING 🎵</div>
+        <h1 id="lyricText">
+          এ যেন সহজ স্বীকারোক্তি
+          আমি যুগান্তরী নই
+        </h1>
+        <p class="signature">For Samira — From Tanvir</p>
       </div>
 
     </div>
