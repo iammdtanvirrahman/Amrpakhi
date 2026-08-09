@@ -1,61 +1,73 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Samira ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samira — A Quiet Universe</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="stars"></div>
+  <div class="noise"></div>
+  <div class="gradient gradient-1"></div>
+  <div class="gradient gradient-2"></div>
 
-  <div class="moon">
-    <div class="crater crater1"></div>
-    <div class="crater crater2"></div>
-    <div class="crater crater3"></div>
-  </div>
+  <header class="nav">
+    <div class="logo">S</div>
+    <div class="nav-text">For Samira</div>
+  </header>
 
-  <main class="container">
+  <main class="hero">
+    <div class="hero-content">
 
-    <section class="hero-card">
-      <div class="heart">💖</div>
-      <h1>সামিরা</h1>
-      <p class="subtitle">আমার মায়াবতী রাজকন্যা 🌙✨</p>
+      <div class="eyebrow">PRIVATE EXPERIENCE</div>
 
-      <div class="typing-box">
-        <p id="typing"></p>
+      <h1>
+        তুমি শুধু একজন মানুষ নও,<br>
+        তুমি আমার <span>নীরব মহাবিশ্ব</span>
+      </h1>
+
+      <p class="description">
+        কিছু অনুভূতি শব্দ দিয়ে বোঝানো যায় না।
+        তাই আমি তোমার জন্য একটা ছোট ডিজিটাল মহাবিশ্ব তৈরি করেছি —
+        যেখানে প্রতিটা আলো, প্রতিটা অ্যানিমেশন, প্রতিটা নীরবতা শুধু তোমাকেই মনে করিয়ে দেয়।
+      </p>
+
+      <div class="actions">
+        <button id="revealBtn" class="primary-btn">
+          Reveal My Heart
+        </button>
+
+        <button class="secondary-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">
+          Read More
+        </button>
       </div>
 
-      <button id="loveBtn">আমাকে ছুঁয়ে দেখো 💕</button>
-    </section>
+    </div>
 
-    <section class="messages">
-      <h2>তোমার জন্য কিছু কথা</h2>
-
-      <div class="message-card">
-        <p>তুমি আমার রাতের আকাশের সবচেয়ে উজ্জ্বল তারা। ⭐</p>
-      </div>
-
-      <div class="message-card">
-        <p>তোমার হাসি দেখলেই পৃথিবীটা আরও সুন্দর লাগে। 😊</p>
-      </div>
-
-      <div class="message-card">
-        <p>চাঁদটা যতই সুন্দর হোক, তোমার চোখের কাছে হার মেনে যায়। 🌕❤️</p>
-      </div>
-    </section>
-
-    <section class="footer-love">
-      <p>ইতি, কেবল তোমারই <strong>তানভীর</strong> 💌</p>
-    </section>
-
+    <div class="orb-container">
+      <div class="orb"></div>
+      <div class="orb-ring orb-ring-1"></div>
+      <div class="orb-ring orb-ring-2"></div>
+    </div>
   </main>
+
+  <section class="message-panel hidden" id="messagePanel">
+    <div class="panel-inner">
+      <div class="panel-label">CONFIDENTIAL MESSAGE</div>
+      <h2>সামিরা,</h2>
+      <p id="typedText"></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Crafted quietly by <span>Tanvir</span> · 2026</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
