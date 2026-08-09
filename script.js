@@ -1,53 +1,47 @@
-// Create Stars
-const starsContainer = document.querySelector('.stars');
+const revealBtn = document.getElementById('revealBtn');
+const panel = document.getElementById('messagePanel');
+const typedText = document.getElementById('typedText');
 
-for (let i = 0; i < 180; i++) {
-  const star = document.createElement('div');
-  star.className = 'star';
+const message = `
+তুমি জানো, পৃথিবীতে অসংখ্য মানুষ আছে,
+কিন্তু আমার চিন্তার শেষ প্রান্তে প্রতিদিন একই মানুষটাকেই খুঁজে পাই — তোমাকে।
 
-  star.style.top = Math.random() * 100 + '%';
-  star.style.left = Math.random() * 100 + '%';
-  star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+তোমার উপস্থিতি কোনো শব্দ নয়,
+এটা একটা অনুভূতি।
 
-  starsContainer.appendChild(star);
-}
+যখন রাত গভীর হয় আর চারপাশ শান্ত হয়ে যায়,
+তখনও মনে হয় তুমি আমার পাশে আছো।
 
-// Typing Effect
-const text = "সামিরা, তুমি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি। তোমার হাসি আমার অন্ধকার রাতকে আলোকিত করে দেয়। তুমি আছো বলেই পৃথিবীটা এত সুন্দর লাগে। 💖";
+এই ওয়েবসাইটটা শুধু কোড দিয়ে বানানো না,
+এটা বানানো হয়েছে অপেক্ষা, ভালোবাসা আর তোমাকে হারাতে না চাওয়ার অনুভূতি দিয়ে।
 
-const typingElement = document.getElementById('typing');
-let index = 0;
+— তোমার তানভীর 💙
+`.trim();
 
-function typeWriter() {
-  if (index < text.length) {
-    typingElement.innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeWriter, 55);
+let isTyping = false;
+
+revealBtn.addEventListener('click', () => {
+  panel.classList.remove('hidden');
+
+  if (isTyping) return;
+
+  isTyping = true;
+  typedText.textContent = '';
+
+  let index = 0;
+
+  function type() {
+    if (index < message.length) {
+      typedText.textContent += message.charAt(index);
+      index++;
+      setTimeout(type, 26);
+    }
   }
-}
 
-typeWriter();
+  type();
 
-// Floating Hearts
-const loveBtn = document.getElementById('loveBtn');
-
-loveBtn.addEventListener('click', () => {
-  for (let i = 0; i < 12; i++) {
-    setTimeout(createHeart, i * 120);
-  }
+  panel.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
 });
-
-function createHeart() {
-  const heart = document.createElement('div');
-  heart.className = 'floating-heart';
-  heart.textContent = '💖';
-
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.top = '80vh';
-
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 3000);
-}
