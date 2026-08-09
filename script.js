@@ -1,15 +1,16 @@
-// ⭐ Stars (Kept the same)
+// ⭐ Generate Stars
 const starsContainer = document.getElementById('stars');
-for (let i = 0; i < 250; i++) {
+
+for (let i = 0; i < 320; i++) {
   const star = document.createElement('div');
   star.className = 'star';
   star.style.top = Math.random() * 100 + '%';
   star.style.left = Math.random() * 100 + '%';
-  star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+  star.style.animationDuration = (Math.random() * 4 + 2) + 's';
   starsContainer.appendChild(star);
 }
 
-// 📸 6 Photos (Updated file names to match your request)
+// 📸 Your 6 Photos
 const photos = [
   '1.jpg',
   '2.jpg',
@@ -19,62 +20,95 @@ const photos = [
   '6.jpg'
 ];
 
-// 🎵 Your Song Lines
+// 🎵 Your Lyrics
 const lyrics = [
   `এ যেন সহজ স্বীকারোক্তি
 আমি যুগান্তরী নই`,
 
   `এ যেন ভীষণ আক্ষেপ আমার
-আমি দিগ্বিজয়ী নই`,
+আমি দিগ্বিজয়ী নই`,
 
-  `শুধু একটাই আশা আমি বুকে জড়িয়ে
-রবো সারাটি জীবন তোমায় নিয়ে`,
+  `শুধু একটাই আশা আমি বুকে জড়িয়ে
+রবো সারাটি জীবন তোমায় নিয়ে`,
 
   `কোনো এক নিঃসঙ্গ রোদেলা রাতে দেখেছি
-প্রিয়তমা তোমার চোখে মিষ্টি হাসি`,
+প্রিয়তমা তোমার চোখে মিষ্টি হাসি`,
 
   `কোনো এক দুঃসহ জোছনা দিনে
 বাতি নিভে গেলে
-কড়া নেড়েছি তোমার হাতের ঘরে`,
+কড়া নেড়েছি তোমার হাতের ঘরে`,
 
-  `বিন্দু আমি, তুমি আমায় ঘিরে
+  `বিন্দু আমি, তুমি আমায় ঘিরে
 বৃত্তের ভেতর শুধু তুমি আছো
 
 মাতাল আমি তোমার প্রেমে
 তাই অর্থহীন সবই যে প্রেম লাগে 💙`
 ];
 
-// Elements
 const imageEl = document.getElementById('slideImage');
-const bgBlurEl = document.getElementById('bgBlur');
 const lyricEl = document.getElementById('lyricText');
+const counterEl = document.getElementById('counter');
+const progressBar = document.getElementById('progressBar');
 
 let index = 0;
 
+function updateCounter() {
+  counterEl.textContent = `${String(index + 1).padStart(2, '0')} / 06`;
+}
+
 function nextSlide() {
-  // Fade out elements
   imageEl.style.opacity = '0';
-  bgBlurEl.style.opacity = '0';
   lyricEl.style.opacity = '0';
 
   setTimeout(() => {
-    // Move to next index
     index = (index + 1) % photos.length;
 
-    // Update contents
     imageEl.src = photos[index];
-    bgBlurEl.src = photos[index];
     lyricEl.textContent = lyrics[index];
 
-    // Fade in elements
-    imageEl.style.opacity = '1';
-    bgBlurEl.style.opacity = '1';
-    lyricEl.style.opacity = '1';
+    // slow cinematic zoom
+    imageEl.style.transform = 'scale(1.08)';
+
+    requestAnimationFrame(() => {
+      imageEl.style.opacity = '1';
+      lyricEl.style.opacity = '1';
+      imageEl.style.transform = 'scale(1)';
+    });
+
+    updateCounter();
+
+    // restart progress animation
+    progressBar.style.animation = 'none';
+    void progressBar.offsetWidth;
+    progressBar.style.animation = 'progressAnim 7s linear infinite';
+
   }, 900);
 }
 
-// ⏱️ প্রতি 7 সেকেন্ডে স্লাইড চেঞ্জ
+updateCounter();
+lyricEl.textContent = lyrics[0];
+
+// ⏱️ Change every 7 seconds
 setInterval(nextSlide, 7000);
 
-// প্রথম লাইন দেখাও
-lyricEl.textContent = lyrics[0];
+// 🎵 Optional Music Button
+const musicBtn = document.getElementById('musicBtn');
+const bgMusic = document.getElementById('bgMusic');
+
+let playing = false;
+
+musicBtn.addEventListener('click', async () => {
+  try {
+    if (!playing) {
+      await bgMusic.play();
+      musicBtn.textContent = '⏸️';
+      playing = true;
+    } else {
+      bgMusic.pause();
+      musicBtn.textContent = '🎵';
+      playing = false;
+    }
+  } catch (err) {
+    console.log('Music file not found yet');
+  }
+});
