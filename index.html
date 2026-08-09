@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samira — My Universe 💙</title>
+  <title>For Samira 💙</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="planet-loader"></div>
+      <h2>Loading Your Universe...</h2>
+      <p id="loadingText">Preparing memories ✨</p>
+    </div>
+  </div>
 
   <div id="stars"></div>
 
@@ -29,7 +37,6 @@
   </div>
 
   <main class="hero">
-
     <div class="cinema-card">
 
       <img id="slideImage" src="1.jpg" alt="Samira">
@@ -40,8 +47,8 @@
           <div class="top-label">NOW PLAYING • MY HEART</div>
 
           <h1 id="lyricText">
-            এ যেন সহজ স্বীকারোক্তি
-            আমি যুগান্তরী নই
+এ যেন সহজ স্বীকারোক্তি
+আমি যুগান্তরী নই
           </h1>
 
           <div class="progress">
@@ -57,14 +64,7 @@
       </div>
 
     </div>
-
   </main>
-
-  <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
-
-  <button id="musicBtn" class="music-btn">🎵</button>
 
   <script src="script.js"></script>
 </body>
