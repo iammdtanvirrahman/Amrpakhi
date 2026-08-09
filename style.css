@@ -1,204 +1,141 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  font-family:'Inter','Noto Sans Bengali',sans-serif;
-  min-height:100vh;
-  overflow:hidden;
-  background:radial-gradient(circle at center,#081120 0%,#03050d 45%,#000 100%);
-  color:#fff;
-  position:relative;
+body {
+  font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #081120 0%, #03050d 45%, #000 100%);
+  color: #fff;
+  position: relative;
 }
 
-#stars{
-  position:fixed;
-  inset:0;
-  z-index:0;
+/* --- Planets & Background Animations (Kept Exactly As Yours) --- */
+#stars { position: fixed; inset: 0; z-index: 0; }
+.star { position: absolute; width: 2px; height: 2px; background: #fff; border-radius: 50%; opacity: .8; animation: twinkle 3s infinite ease-in-out; }
+@keyframes twinkle { 0%, 100% { opacity: .8; } 50% { opacity: .2; } }
+.sun { position: fixed; top: -120px; left: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, #fff2a8 0%, #ffd166 35%, #ff8c42 65%, transparent 100%); filter: blur(10px); opacity: .95; }
+.moon { position: fixed; top: 8%; right: 10%; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff 0%, #dfe5f5 60%, #9ca6c7 100%); box-shadow: 0 0 40px rgba(255,255,255,.25); }
+.earth { position: fixed; bottom: 8%; left: 8%; width: 70px; height: 70px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #7dd3fc 0%, #2563eb 45%, #0b1f5f 100%); box-shadow: 0 0 25px rgba(37,99,235,.45); animation: earthRotate 16s linear infinite; }
+@keyframes earthRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.neptune-wrap { position: fixed; right: 5%; bottom: 12%; width: 170px; height: 170px; }
+.neptune { position: absolute; width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #c4b5fd 0%, #7c3aed 45%, #312e81 100%); top: 40px; left: 40px; box-shadow: 0 0 30px rgba(124,58,237,.35); }
+.neptune-ring { position: absolute; width: 160px; height: 60px; border: 2px solid rgba(255,255,255,.25); border-radius: 50%; top: 55px; left: 5px; transform: rotate(-15deg); }
+
+/* --- New Slideshow Layout --- */
+.slideshow {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-.star{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:#fff;
-  border-radius:50%;
-  opacity:.8;
-  animation:twinkle 3s infinite ease-in-out;
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: min(800px, 100%);
+  height: min(90vh, 850px);
+  background: rgba(10, 15, 30, 0.6);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
-@keyframes twinkle{
-  0%,100%{opacity:.8;}
-  50%{opacity:.2;}
+/* Image Section */
+.image-area {
+  position: relative;
+  flex: 1; /* Takes up the remaining space dynamically */
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* Dark background to blend with contain images */
 }
 
-.sun{
-  position:fixed;
-  top:-120px;
-  left:-120px;
-  width:320px;
-  height:320px;
-  border-radius:50%;
-  background:radial-gradient(circle,#fff2a8 0%,#ffd166 35%,#ff8c42 65%,transparent 100%);
-  filter:blur(10px);
-  opacity:.95;
+/* The Blurred Background behind the main image */
+.bg-blur {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(25px) brightness(0.3);
+  z-index: 1;
+  transition: opacity 1.2s ease;
 }
 
-.moon{
-  position:fixed;
-  top:8%;
-  right:10%;
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  background:radial-gradient(circle at 35% 35%,#fff 0%,#dfe5f5 60%,#9ca6c7 100%);
-  box-shadow:0 0 40px rgba(255,255,255,.25);
+/* The Main Clear Image */
+.main-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures the whole image shows, no cutting */
+  padding: 10px; /* Optional padding so it doesn't touch edges */
+  transition: opacity 1.2s ease;
 }
 
-.earth{
-  position:fixed;
-  bottom:8%;
-  left:8%;
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,#7dd3fc 0%,#2563eb 45%,#0b1f5f 100%);
-  box-shadow:0 0 25px rgba(37,99,235,.45);
-  animation:earthRotate 16s linear infinite;
+/* Text Section (Below the image) */
+.text-area {
+  padding: 30px 20px;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(10, 15, 30, 0.8) 100%);
+  min-height: 220px; /* Ensures enough space for lyrics */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes earthRotate{
-  from{transform:rotate(0deg);}
-  to{transform:rotate(360deg);}
+.label {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #dbe4ff;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
 }
 
-.neptune-wrap{
-  position:fixed;
-  right:5%;
-  bottom:12%;
-  width:170px;
-  height:170px;
+#lyricText {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  line-height: 1.4;
+  margin-bottom: 15px;
+  white-space: pre-line;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  transition: opacity 0.8s ease;
+  color: #fff;
 }
 
-.neptune{
-  position:absolute;
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 30%,#c4b5fd 0%,#7c3aed 45%,#312e81 100%);
-  top:40px;
-  left:40px;
-  box-shadow:0 0 30px rgba(124,58,237,.35);
+.signature {
+  color: #a4b1d6;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  font-style: italic;
 }
 
-.neptune-ring{
-  position:absolute;
-  width:160px;
-  height:60px;
-  border:2px solid rgba(255,255,255,.25);
-  border-radius:50%;
-  top:55px;
-  left:5px;
-  transform:rotate(-15deg);
-}
-
-.slideshow{
-  position:relative;
-  z-index:2;
-  width:100%;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-}
-
-.photo-frame{
-  position:relative;
-  width:min(1100px,100%);
-  height:min(78vh,820px);
-  border-radius:34px;
-  overflow:hidden;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(18px);
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
-}
-
-.photo-frame img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:opacity 1.2s ease,transform 6s ease;
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.38) 45%,transparent 100%);
-  display:flex;
-  align-items:flex-end;
-  padding:clamp(24px,4vw,44px);
-}
-
-.overlay-inner{
-  max-width:min(780px,100%);
-}
-
-.label{
-  display:inline-flex;
-  padding:8px 14px;
-  border-radius:999px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.16);
-  color:#dbe4ff;
-  font-size:.76rem;
-  letter-spacing:.16em;
-  margin-bottom:16px;
-}
-
-#lyricText{
-  font-size:clamp(2rem,5vw,4.8rem);
-  line-height:1.15;
-  letter-spacing:-.04em;
-  margin-bottom:16px;
-  white-space:pre-line;
-  text-shadow:0 8px 30px rgba(0,0,0,.55);
-  transition:opacity .8s ease;
-}
-
-.signature{
-  color:#d1d8ec;
-  font-size:1rem;
-  letter-spacing:.08em;
-}
-
-@media (max-width:768px){
-  .photo-frame{
-    height:72vh;
-    border-radius:24px;
+@media (max-width: 768px) {
+  .card-container {
+    height: 85vh;
   }
-
-  .moon{
-    width:82px;
-    height:82px;
+  .text-area {
+    padding: 20px 15px;
+    min-height: 180px;
   }
-
-  .sun{
-    width:220px;
-    height:220px;
-  }
-
-  .neptune-wrap{
-    transform:scale(.78);
-    right:2%;
-    bottom:6%;
-  }
-
-  .earth{
-    width:54px;
-    height:54px;
-  }
+  .moon { width: 82px; height: 82px; }
+  .sun { width: 220px; height: 220px; }
+  .neptune-wrap { transform: scale(.78); right: 2%; bottom: 6%; }
+  .earth { width: 54px; height: 54px; }
 }
