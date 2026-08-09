@@ -1,162 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <title>Ultra Realistic Night Sky</title>
-  <style>
-    body {
-      margin: 0;
-      background: radial-gradient(circle at center, #02020f 0%, #000 100%);
-      height: 100vh;
-      overflow: hidden;
-      font-family: 'Noto Sans Bengali', sans-serif;
-    }
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      z-index: 1;
-    }
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: twinkle 2s infinite ease-in-out;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 0.2; }
-    }
-    .moon {
-      position: absolute;
-      top: 20%;
-      left: 65%;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle at 40% 40%, #fafafa, #dcdcdc 70%, #b0b0b0 100%);
-      border-radius: 50%;
-      box-shadow:
-        0 0 60px 30px rgba(255, 255, 255, 0.2),
-        0 0 200px 60px rgba(200, 200, 255, 0.08);
-      z-index: 2;
-    }
-    .crater {
-      position: absolute;
-      background: #999;
-      border-radius: 50%;
-      opacity: 0.3;
-    }
-    .crater1 { top: 40px; left: 50px; width: 20px; height: 20px; }
-    .crater2 { top: 100px; left: 90px; width: 15px; height: 15px; }
-    .crater3 { top: 60px; left: 120px; width: 25px; height: 25px; }
-    .crater4 { top: 130px; left: 40px; width: 10px; height: 10px; }
-    .floating-text {
-      position: absolute;
-      bottom: 350px;
-      left: 20px;
-      color: #f2f2f2;
-      font-size: 20px;
-      max-width: 500px;
-      z-index: 3;
-      animation: floatText 60s linear infinite;
-    }
-    @keyframes floatText {
-      0% { opacity: 0; transform: translateY(0); }
-      5% { opacity: 1; }
-      95% { opacity: 1; }
-      100% { opacity: 0; transform: translateY(-100px); }
-    }
-    .bird {
-      position: absolute;
-      top: 10%;
-      width: 40px;
-      height: 40px;
-      background: none;
-      animation: fly 15s linear infinite;
-      z-index: 4;
-    }
-    .bird:nth-child(2) {
-      top: 20%;
-      animation-delay: 3s;
-      transform: scale(0.8);
-    }
-    .bird:nth-child(3) {
-      top: 30%;
-      animation-delay: 6s;
-      transform: scale(0.6);
-    }
-    @keyframes fly {
-      0% { left: -100px; }
-      100% { left: 110%; }
-    }
-    .asteroid {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 8px white;
-      top: 10%;
-      left: -10%;
-      animation: moveAsteroid 5s linear infinite;
-      z-index: 2;
-    }
-    @keyframes moveAsteroid {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(120vw, 120vh); }
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Samira ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <div class="stars"></div>
+
   <div class="moon">
     <div class="crater crater1"></div>
     <div class="crater crater2"></div>
     <div class="crater crater3"></div>
-    <div class="crater crater4"></div>
   </div>
-  <div id="floatingText" class="floating-text"></div>
-  <div class="asteroid"></div>
-  <script>
-    const starsContainer = document.querySelector('.stars');
-    for (let i = 0; i < 200; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 2 + 1) + 's';
-      starsContainer.appendChild(star);
-    }
-    const messages = [
-      "ওগো আমার মায়াবতী সামিরা...।",
-      "তুমি আমার জীবনে ঐ চাঁদটার চেয়েও বেশি সুন্দর, বেশি স্পেশাল।",
-      "তুমি আমার মায়াবতী রাজকন্যা, আমার মিষ্টি বউ, সুন্দরী আমার...",
-      "আমি যদি ওর্ফেউস হতাম,সারাটি জীবন শুধু তোমার জন্যই বাঁশি বাজাতাম।",
-      "দা ভিঞ্চি হলে সারাজীবন তোমাকেই আঁকতাম।",
-      "শেক্সপিয়ার হলে তুমি হতে আমার গল্পের নায়িকা।",
-      "আমি যদি শাহজাহান হতাম, তুমি হতে আমার মমতাজ।",
-      "তুমি আছো বলেই আমার রাতগুলো এত সুন্দর, চাঁদ যেন তোমারই প্রতিবিম্ব।",
-      "তোমার হাসি আমাকে অন্ধকারেও পথ দেখায়।",
-      "তুমি ছাড়া আমি অসম্পূর্ণ — এক অপূর্ণ গল্পের নায়ক।",
-      "তোমাকে ভালোবাসি তারাও জানে, রাতের আকাশই তার সাক্ষী।",
-      "ইতি কেবল তোমারই তানভীর"
-    ];
-    let index = 0;
-    const floatingText = document.getElementById('floatingText');
-    function showNextMessage() {
-      floatingText.textContent = messages[index];
-      floatingText.style.animation = 'none';
-      void floatingText.offsetWidth;
-      floatingText.style.animation = null;
-      index = (index + 1) % messages.length;
-    }
-    showNextMessage();
-    setInterval(showNextMessage, 6000);
-  </script>
+
+  <main class="container">
+
+    <section class="hero-card">
+      <div class="heart">💖</div>
+      <h1>সামিরা</h1>
+      <p class="subtitle">আমার মায়াবতী রাজকন্যা 🌙✨</p>
+
+      <div class="typing-box">
+        <p id="typing"></p>
+      </div>
+
+      <button id="loveBtn">আমাকে ছুঁয়ে দেখো 💕</button>
+    </section>
+
+    <section class="messages">
+      <h2>তোমার জন্য কিছু কথা</h2>
+
+      <div class="message-card">
+        <p>তুমি আমার রাতের আকাশের সবচেয়ে উজ্জ্বল তারা। ⭐</p>
+      </div>
+
+      <div class="message-card">
+        <p>তোমার হাসি দেখলেই পৃথিবীটা আরও সুন্দর লাগে। 😊</p>
+      </div>
+
+      <div class="message-card">
+        <p>চাঁদটা যতই সুন্দর হোক, তোমার চোখের কাছে হার মেনে যায়। 🌕❤️</p>
+      </div>
+    </section>
+
+    <section class="footer-love">
+      <p>ইতি, কেবল তোমারই <strong>তানভীর</strong> 💌</p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
