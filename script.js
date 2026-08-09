@@ -1,40 +1,71 @@
+// ⭐ Generate Stars
+const stars = document.getElementById('stars');
+
+for (let i = 0; i < 220; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+  stars.appendChild(star);
+}
+
+// 📝 Floating text on photo
+const floatingText = document.getElementById('floatingText');
+
+const photoMessages = [
+  'তুমি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি।',
+  'চাঁদটা সুন্দর, কিন্তু তোমার হাসি আরও উজ্জ্বল।',
+  'তুমি থাকলে নীরবতাও গান হয়ে যায়।',
+  'আমার প্রতিটা রাত তোমার নামেই জ্বলে ওঠে।'
+];
+
+let photoIndex = 0;
+
+setInterval(() => {
+  floatingText.style.opacity = '0';
+
+  setTimeout(() => {
+    photoIndex = (photoIndex + 1) % photoMessages.length;
+    floatingText.textContent = photoMessages[photoIndex];
+    floatingText.style.opacity = '1';
+  }, 400);
+}, 5000);
+
+// 💙 Reveal panel with typing effect
 const revealBtn = document.getElementById('revealBtn');
 const panel = document.getElementById('messagePanel');
 const typedText = document.getElementById('typedText');
 
-const message = `
-তুমি জানো, পৃথিবীতে অসংখ্য মানুষ আছে,
-কিন্তু আমার চিন্তার শেষ প্রান্তে প্রতিদিন একই মানুষটাকেই খুঁজে পাই — তোমাকে।
+const secretMessage = `
+সামিরা,
 
-তোমার উপস্থিতি কোনো শব্দ নয়,
-এটা একটা অনুভূতি।
+এই মহাবিশ্বে অসংখ্য তারা আছে,
+কিন্তু আমার আকাশে সবচেয়ে উজ্জ্বল আলোটা শুধু তুমি।
 
-যখন রাত গভীর হয় আর চারপাশ শান্ত হয়ে যায়,
-তখনও মনে হয় তুমি আমার পাশে আছো।
+যখন পৃথিবী ঘুরে, চাঁদ ওঠে, সূর্য আলো ছড়ায়,
+তখনও আমার মনে হয় সবকিছু যেন তোমাকে ঘিরেই চলছে।
 
-এই ওয়েবসাইটটা শুধু কোড দিয়ে বানানো না,
-এটা বানানো হয়েছে অপেক্ষা, ভালোবাসা আর তোমাকে হারাতে না চাওয়ার অনুভূতি দিয়ে।
+এই ছোট্ট ডিজিটাল মহাবিশ্বটা আমি তোমার জন্যই তৈরি করেছি।
 
-— তোমার তানভীর 💙
+— তোমার তানভীর ✨
 `.trim();
 
-let isTyping = false;
+let started = false;
 
 revealBtn.addEventListener('click', () => {
   panel.classList.remove('hidden');
 
-  if (isTyping) return;
+  if (started) return;
+  started = true;
 
-  isTyping = true;
-  typedText.textContent = '';
-
-  let index = 0;
+  let i = 0;
 
   function type() {
-    if (index < message.length) {
-      typedText.textContent += message.charAt(index);
-      index++;
-      setTimeout(type, 26);
+    if (i < secretMessage.length) {
+      typedText.textContent += secretMessage.charAt(i);
+      i++;
+      setTimeout(type, 28);
     }
   }
 
