@@ -12,12 +12,12 @@ for (let i = 0; i < 250; i++) {
 
 // 📸 6 Photos
 const photos = [
-  'photo1.jpg',
-  'photo2.jpg',
-  'photo3.jpg',
-  'photo4.jpg',
-  'photo5.jpg',
-  'photo6.jpg'
+  '1.jpg',
+  '2.jpg',
+  '3.jpg',
+  '4.jpg',
+  '5.jpg',
+  '6.jpg'
 ];
 
 // 🎵 Your Song Lines
