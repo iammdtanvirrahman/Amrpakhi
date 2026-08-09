@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samira — My Universe</title>
+  <title>For Samira 💙</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -17,56 +17,37 @@
 
   <div class="sun"></div>
   <div class="moon"></div>
+  <div class="earth"></div>
 
-  <div class="earth-orbit">
-    <div class="earth"></div>
-  </div>
-
-  <div class="neptune-container">
+  <div class="neptune-wrap">
     <div class="neptune-ring"></div>
     <div class="neptune"></div>
   </div>
 
-  <main class="hero">
+  <main class="slideshow">
+    <div class="photo-frame">
 
-    <section class="left-content">
-      <div class="tag">PRIVATE COSMIC EXPERIENCE</div>
+      <img id="slideImage" src="photo1.jpg" alt="Samira">
 
-      <h1>
-        তোমাকে ভালোবাসা মানে<br>
-        <span>একটা সম্পূর্ণ মহাবিশ্বকে অনুভব করা</span>
-      </h1>
+      <div class="overlay">
+        <div class="overlay-inner">
 
-      <p>
-        এই ওয়েবসাইটটা শুধু একটা পেজ না।
-        এটা এমন একটা নীরব মহাকাশ যেখানে প্রতিটা তারা, প্রতিটা আলো আর প্রতিটা গ্রহ তোমাকেই মনে করিয়ে দেয়।
-      </p>
+          <div class="label">NOW PLAYING 🎵</div>
 
-      <button id="revealBtn">Reveal My Heart ✨</button>
-    </section>
+          <h1 id="lyricText">
+            এ যেন সহজ স্বীকারোক্তি
+            আমি যুগান্তরী নই
+          </h1>
 
-    <section class="right-content">
-      <div class="photo-card">
-        <img src="samira.jpg" alt="Samira">
+          <p class="signature">
+            For Samira — From Tanvir
+          </p>
 
-        <div class="overlay">
-          <div class="overlay-content">
-            <div class="small">FOR MY PERSON</div>
-            <h2>Samira</h2>
-            <p id="floatingText">তুমি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি।</p>
-          </div>
         </div>
       </div>
-    </section>
 
-  </main>
-
-  <section class="message-panel hidden" id="messagePanel">
-    <div class="panel-inner">
-      <div class="panel-label">CONFIDENTIAL MESSAGE</div>
-      <p id="typedText"></p>
     </div>
-  </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
