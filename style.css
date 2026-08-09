@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans Bengali', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at top, #0b1026 0%, #02030a 50%, #000 100%);
+  color: white;
+  position: relative;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.2; }
+}
+
+.moon {
+  position: fixed;
+  top: 8%;
+  right: 10%;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e7e7e7 55%, #b8b8b8 100%);
+  box-shadow:
+    0 0 40px rgba(255,255,255,0.35),
+    0 0 120px rgba(180,200,255,0.12);
+  z-index: 2;
+}
+
+.crater {
+  position: absolute;
+  background: rgba(120,120,120,0.35);
+  border-radius: 50%;
+}
+
+.crater1 { width: 22px; height: 22px; top: 34px; left: 42px; }
+.crater2 { width: 16px; height: 16px; top: 84px; left: 96px; }
+.crater3 { width: 26px; height: 26px; top: 56px; left: 112px; }
+
+.container {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 110px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hero-card {
+  text-align: center;
+  padding: 42px 28px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+}
+
+.heart {
+  font-size: 52px;
+  animation: pulse 1.5s infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+h1 {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  margin-bottom: 8px;
+  color: #ffd6e7;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #d8e2ff;
+  margin-bottom: 24px;
+}
+
+.typing-box {
+  min-height: 90px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 22px;
+}
+
+#typing {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #f8f8ff;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff4f9a, #ff7ab8);
+  color: white;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 24px rgba(255,79,154,0.35);
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(255,79,154,0.45);
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.messages h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffe5f0;
+}
+
+.message-card {
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+}
+
+.message-card p {
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.footer-love {
+  text-align: center;
+  padding: 28px 20px 10px;
+  color: #d6d6e8;
+}
+
+.floating-heart {
+  position: fixed;
+  font-size: 28px;
+  pointer-events: none;
+  animation: floatUp 3s linear forwards;
+  z-index: 9999;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-220px) scale(1.8);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-top: 90px;
+  }
+
+  .moon {
+    width: 110px;
+    height: 110px;
+    right: 6%;
+    top: 6%;
+  }
+
+  .hero-card {
+    padding: 34px 20px;
+  }
+
+  .messages h2 {
+    font-size: 1.7rem;
+  }
+}
