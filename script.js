@@ -1,78 +1,72 @@
-// ⭐ Generate Stars
-const stars = document.getElementById('stars');
+// ⭐ Stars
+const starsContainer = document.getElementById('stars');
 
-for (let i = 0; i < 220; i++) {
+for (let i = 0; i < 250; i++) {
   const star = document.createElement('div');
   star.className = 'star';
   star.style.top = Math.random() * 100 + '%';
   star.style.left = Math.random() * 100 + '%';
   star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-  stars.appendChild(star);
+  starsContainer.appendChild(star);
 }
 
-// 📝 Floating text on photo
-const floatingText = document.getElementById('floatingText');
-
-const photoMessages = [
-  'তুমি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি।',
-  'চাঁদটা সুন্দর, কিন্তু তোমার হাসি আরও উজ্জ্বল।',
-  'তুমি থাকলে নীরবতাও গান হয়ে যায়।',
-  'আমার প্রতিটা রাত তোমার নামেই জ্বলে ওঠে।'
+// 📸 6 Photos
+const photos = [
+  'photo1.jpg',
+  'photo2.jpg',
+  'photo3.jpg',
+  'photo4.jpg',
+  'photo5.jpg',
+  'photo6.jpg'
 ];
 
-let photoIndex = 0;
+// 🎵 Your Song Lines
+const lyrics = [
+  `এ যেন সহজ স্বীকারোক্তি
+আমি যুগান্তরী নই`,
 
-setInterval(() => {
-  floatingText.style.opacity = '0';
+  `এ যেন ভীষণ আক্ষেপ আমার
+আমি দিগ্বিজয়ী নই`,
+
+  `শুধু একটাই আশা আমি বুকে জড়িয়ে
+রবো সারাটি জীবন তোমায় নিয়ে`,
+
+  `কোনো এক নিঃসঙ্গ রোদেলা রাতে দেখেছি
+প্রিয়তমা তোমার চোখে মিষ্টি হাসি`,
+
+  `কোনো এক দুঃসহ জোছনা দিনে
+বাতি নিভে গেলে
+কড়া নেড়েছি তোমার হাতের ঘরে`,
+
+  `বিন্দু আমি, তুমি আমায় ঘিরে
+বৃত্তের ভেতর শুধু তুমি আছো
+
+মাতাল আমি তোমার প্রেমে
+তাই অর্থহীন সবই যে প্রেম লাগে 💙`
+];
+
+const imageEl = document.getElementById('slideImage');
+const lyricEl = document.getElementById('lyricText');
+
+let index = 0;
+
+function nextSlide() {
+  imageEl.style.opacity = '0';
+  lyricEl.style.opacity = '0';
 
   setTimeout(() => {
-    photoIndex = (photoIndex + 1) % photoMessages.length;
-    floatingText.textContent = photoMessages[photoIndex];
-    floatingText.style.opacity = '1';
-  }, 400);
-}, 5000);
+    index = (index + 1) % photos.length;
 
-// 💙 Reveal panel with typing effect
-const revealBtn = document.getElementById('revealBtn');
-const panel = document.getElementById('messagePanel');
-const typedText = document.getElementById('typedText');
+    imageEl.src = photos[index];
+    lyricEl.textContent = lyrics[index];
 
-const secretMessage = `
-সামিরা,
+    imageEl.style.opacity = '1';
+    lyricEl.style.opacity = '1';
+  }, 900);
+}
 
-এই মহাবিশ্বে অসংখ্য তারা আছে,
-কিন্তু আমার আকাশে সবচেয়ে উজ্জ্বল আলোটা শুধু তুমি।
+// ⏱️ প্রতি 7 সেকেন্ডে নতুন ছবি + নতুন লাইন
+setInterval(nextSlide, 7000);
 
-যখন পৃথিবী ঘুরে, চাঁদ ওঠে, সূর্য আলো ছড়ায়,
-তখনও আমার মনে হয় সবকিছু যেন তোমাকে ঘিরেই চলছে।
-
-এই ছোট্ট ডিজিটাল মহাবিশ্বটা আমি তোমার জন্যই তৈরি করেছি।
-
-— তোমার তানভীর ✨
-`.trim();
-
-let started = false;
-
-revealBtn.addEventListener('click', () => {
-  panel.classList.remove('hidden');
-
-  if (started) return;
-  started = true;
-
-  let i = 0;
-
-  function type() {
-    if (i < secretMessage.length) {
-      typedText.textContent += secretMessage.charAt(i);
-      i++;
-      setTimeout(type, 28);
-    }
-  }
-
-  type();
-
-  panel.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
-});
+// প্রথম লাইন দেখাও
+lyricEl.textContent = lyrics[0];
