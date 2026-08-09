@@ -3,71 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samira — A Quiet Universe</title>
+  <title>Samira — My Universe</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="noise"></div>
-  <div class="gradient gradient-1"></div>
-  <div class="gradient gradient-2"></div>
+  <div id="stars"></div>
 
-  <header class="nav">
-    <div class="logo">S</div>
-    <div class="nav-text">For Samira</div>
-  </header>
+  <div class="sun"></div>
+  <div class="moon"></div>
+
+  <div class="earth-orbit">
+    <div class="earth"></div>
+  </div>
+
+  <div class="neptune-container">
+    <div class="neptune-ring"></div>
+    <div class="neptune"></div>
+  </div>
 
   <main class="hero">
-    <div class="hero-content">
 
-      <div class="eyebrow">PRIVATE EXPERIENCE</div>
+    <section class="left-content">
+      <div class="tag">PRIVATE COSMIC EXPERIENCE</div>
 
       <h1>
-        তুমি শুধু একজন মানুষ নও,<br>
-        তুমি আমার <span>নীরব মহাবিশ্ব</span>
+        তোমাকে ভালোবাসা মানে<br>
+        <span>একটা সম্পূর্ণ মহাবিশ্বকে অনুভব করা</span>
       </h1>
 
-      <p class="description">
-        কিছু অনুভূতি শব্দ দিয়ে বোঝানো যায় না।
-        তাই আমি তোমার জন্য একটা ছোট ডিজিটাল মহাবিশ্ব তৈরি করেছি —
-        যেখানে প্রতিটা আলো, প্রতিটা অ্যানিমেশন, প্রতিটা নীরবতা শুধু তোমাকেই মনে করিয়ে দেয়।
+      <p>
+        এই ওয়েবসাইটটা শুধু একটা পেজ না।
+        এটা এমন একটা নীরব মহাকাশ যেখানে প্রতিটা তারা, প্রতিটা আলো আর প্রতিটা গ্রহ তোমাকেই মনে করিয়ে দেয়।
       </p>
 
-      <div class="actions">
-        <button id="revealBtn" class="primary-btn">
-          Reveal My Heart
-        </button>
+      <button id="revealBtn">Reveal My Heart ✨</button>
+    </section>
 
-        <button class="secondary-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">
-          Read More
-        </button>
+    <section class="right-content">
+      <div class="photo-card">
+        <img src="samira.jpg" alt="Samira">
+
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="small">FOR MY PERSON</div>
+            <h2>Samira</h2>
+            <p id="floatingText">তুমি আমার জীবনের সবচেয়ে সুন্দর অনুভূতি।</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-    </div>
-
-    <div class="orb-container">
-      <div class="orb"></div>
-      <div class="orb-ring orb-ring-1"></div>
-      <div class="orb-ring orb-ring-2"></div>
-    </div>
   </main>
 
   <section class="message-panel hidden" id="messagePanel">
     <div class="panel-inner">
       <div class="panel-label">CONFIDENTIAL MESSAGE</div>
-      <h2>সামিরা,</h2>
       <p id="typedText"></p>
     </div>
   </section>
-
-  <footer class="footer">
-    <p>Crafted quietly by <span>Tanvir</span> · 2026</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
