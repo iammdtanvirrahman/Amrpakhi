@@ -3,47 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Samira 💙</title>
+  <title>Samira — My Universe 💙</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div id="stars"></div>
+
   <div class="sun"></div>
   <div class="moon"></div>
-  <div class="earth"></div>
+
+  <div class="earth-orbit">
+    <div class="earth"></div>
+  </div>
 
   <div class="neptune-wrap">
     <div class="neptune-ring"></div>
     <div class="neptune"></div>
   </div>
 
-  <main class="slideshow">
-    <div class="card-container">
-      
-      <!-- Image Section -->
-      <div class="image-area">
-        <!-- Blurred Background Image -->
-        <img id="bgBlur" src="1.jpg" alt="" class="bg-blur">
-        <!-- Main Clear Image -->
-        <img id="slideImage" src="1.jpg" alt="Samira" class="main-img">
-      </div>
+  <main class="hero">
 
-      <!-- Text Section -->
-      <div class="text-area">
-        <div class="label">NOW PLAYING 🎵</div>
-        <h1 id="lyricText">
-          এ যেন সহজ স্বীকারোক্তি
-          আমি যুগান্তরী নই
-        </h1>
-        <p class="signature">For Samira — From Tanvir</p>
+    <div class="cinema-card">
+
+      <img id="slideImage" src="1.jpg" alt="Samira">
+
+      <div class="overlay">
+        <div class="overlay-content">
+
+          <div class="top-label">NOW PLAYING • MY HEART</div>
+
+          <h1 id="lyricText">
+            এ যেন সহজ স্বীকারোক্তি
+            আমি যুগান্তরী নই
+          </h1>
+
+          <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+
+          <div class="bottom-row">
+            <span>For Samira 💙</span>
+            <span id="counter">01 / 06</span>
+          </div>
+
+        </div>
       </div>
 
     </div>
+
   </main>
+
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="musicBtn" class="music-btn">🎵</button>
 
   <script src="script.js"></script>
 </body>
